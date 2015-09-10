@@ -40,6 +40,7 @@ RUN apt-get install -q --yes nodejs
 
 #### NVM ####
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh | bash
+RUN exec bash
 RUN nvm install 0.10
 RUN nvm install 0.12
 RUN nvm install 4
