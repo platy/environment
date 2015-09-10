@@ -35,11 +35,11 @@ RUN update-java-alternatives -s java-8-oracle
 RUN apt-get -y -q install maven
 
 #### NODE v0.12 / NPM ####
-curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
-apt-get install -q --yes nodejs
+RUN curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
+RUN apt-get install -q --yes nodejs
 
 #### NVM ####
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh | bash
-nvm install 0.10
-nvm install 0.12
-nvm install 4
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh | bash
+RUN nvm install 0.10
+RUN nvm install 0.12
+RUN nvm install 4
