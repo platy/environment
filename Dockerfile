@@ -15,7 +15,9 @@ RUN apt-get -y -q install \
         fontconfig \
         curl \
         vim \
+        man \
         software-properties-common
+        # I think i dont need software-properties-common if I add the ppa manually
 
 ##### PYTHON ####
 # install virtualenv
@@ -38,5 +40,17 @@ RUN apt-get -y -q install maven
 RUN curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
 RUN apt-get install -q --yes nodejs
 
+#### DOTFILES ####
+RUN git clone https://github.com/platy/dotfiles.git dotfiles
+RUN dotfiles/script/bootstrap
+
 #### NVM ####
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh | bash
+RUN source $NVM_DIR/nvm.sh \
+    && nvm install stable
+
+#### scala / sbt ####
+RUN echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823
+RUN apt-get update
+RUN apt-get install sbt
