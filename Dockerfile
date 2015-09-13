@@ -42,7 +42,7 @@ RUN apt-get install -q --yes nodejs
 
 #### DOTFILES ####
 RUN git clone https://github.com/platy/dotfiles.git dotfiles
-RUN dotfiles/script/bootstrap
+RUN rm ~/.bashrc && dotfiles/script/bootstrap
 
 #### NVM ####
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh | bash
